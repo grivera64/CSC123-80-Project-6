@@ -40,7 +40,7 @@ public class MotorizedVehicle extends Vehicle
 	public String toString()
 	{
 		
-		return String.format("%s\n%f\n has %f horsepower", 
+		return String.format("%s\nVolume Displacement: %.2f\nHas %.2f horsepower", 
 				super.toString(), this.getVolumeDisplacement(), this.calculateHorsePower());
 		
 	}
