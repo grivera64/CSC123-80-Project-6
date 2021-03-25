@@ -6,6 +6,15 @@ public class MotorizedVehicle extends Vehicle
 	
 	private double volumeDisplacement;
 	
+	public MotorizedVehicle()
+	{
+		
+		this.setOwner("No Owner");
+		this.setWheels(4);
+		this.setVolumeDisplacement(0.0);
+		
+	}
+	
 	public void setVolumeDisplacement(double volumeDisplacement)
 	{
 		

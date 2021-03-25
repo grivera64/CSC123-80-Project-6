@@ -39,7 +39,7 @@ public abstract class Vehicle
 	public String toString()
 	{
 		
-		return String.format("Owner: %s\nNumber of wheels: %d\n", this.owner, this.wheels);
+		return String.format("Owner: %s\nNumber of wheels: %d", this.owner, this.wheels);
 		
 	}
 	
