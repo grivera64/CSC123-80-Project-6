@@ -49,6 +49,7 @@ public class MotorizedVehicle extends Vehicle
 	public boolean equals(Object o)
 	{
 		
+		if (!(o instanceof MotorizedVehicle)) return false;
 		
 		return super.equals(o) &&
 				this.getVolumeDisplacement() == ((MotorizedVehicle)o).getVolumeDisplacement();
