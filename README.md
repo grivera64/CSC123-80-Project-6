@@ -17,7 +17,7 @@ This project is composed of 3 main programs.
 
 ## How to run
 
-Simply use a JDK to run the following commands (example runs simulation/VechicleClient.java):
+Simply use a JDK to run the following commands (example runs simulation/VehicleClient.java):
 
 `javac simulation/VehicleClient.java`
 
