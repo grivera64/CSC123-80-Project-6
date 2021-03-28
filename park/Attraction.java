@@ -1,18 +1,29 @@
 package project6.park;
 
+/*
+ * 
+ * Name: Attraction.java
+ * Purpose: Creates and manages an attraction and its lines
+ * Author: grivera64
+ * 
+ */
 
 import java.util.ArrayList;
 
 public class Attraction
 {
 	
+	//static fields
 	private static int attractionCounter = 0;
+	
+	//other private fields
 	private String attractionID;
 	private int ratePerMinute;
 	private ArrayList<NormalRider> alNormalLine;
 	private ArrayList<FastRider> alFastLine;
 	private ArrayList<Rider> gotOnRide;
 	
+	//default constructor
 	public Attraction()
 	{
 		
@@ -20,13 +31,16 @@ public class Attraction
 		
 	}
 	
+	//constructor that sets ratePerMinute
 	public Attraction(int ratePerMinute)
 	{
 		
-		
+		this.setRatePerMinute(ratePerMinute);
+		this.setAttractionID();
 		
 	}
 	
+	/* Mutators and Acessors */
 	public void setRatePerMinute(int ratePerMinute)
 	{
 		
@@ -55,6 +69,7 @@ public class Attraction
 		
 	}
 	
+	/* Manage different lines (Array Lists) */
 	public void addRiderNormalLine(NormalRider rider)
 	{
 		
