@@ -1,20 +1,20 @@
 package project6.simulation;
 
+/*
+ * 
+ * Name: MotorizedVehicle.java
+ * Purpose: Represetns a Vehicle type MotorizedVehicle
+ * Author: grivera64
+ * 
+ */
+
 public class MotorizedVehicle extends Vehicle
 {
 	
-	
+	//private field
 	private double volumeDisplacement;
 	
-	public MotorizedVehicle()
-	{
-		
-		this.setOwner("No Owner");
-		this.setWheels(4);
-		this.setVolumeDisplacement(0.0);
-		
-	}
-	
+	/* mutator and accessor methods */
 	public void setVolumeDisplacement(double volumeDisplacement)
 	{
 		
@@ -29,6 +29,7 @@ public class MotorizedVehicle extends Vehicle
 		
 	}
 	
+	//calculate the horse power of the vehicle
 	public double calculateHorsePower()
 	{
 		
@@ -37,6 +38,7 @@ public class MotorizedVehicle extends Vehicle
 	}
 	
 	//@Override
+	//print data of MotorizedVehicle
 	public String toString()
 	{
 		
@@ -46,6 +48,7 @@ public class MotorizedVehicle extends Vehicle
 	}
 	
 	//@Override
+	//check if the Vehicles have same owner, and volume displacement
 	public boolean equals(Object o)
 	{
 		

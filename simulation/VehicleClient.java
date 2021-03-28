@@ -1,19 +1,29 @@
 package project6.simulation;
 
+/*
+ * 
+ * Name: VehicleClient.java
+ * Purpose: Tests the Vehicle classes
+ * Author: grivera64
+ * 
+ */
 
 import java.util.Scanner;
 
 public class VehicleClient
 {
 	
-	
+	//driver (main) method
 	public static void main(String[] args)
 	{
 		
+		//create input scanner
 		Scanner keyboard = new Scanner(System.in);
 		
+		//create a motorized vehicle
 		MotorizedVehicle mv1 = new MotorizedVehicle();
 		
+		//request user for vehicle data
 		System.out.printf("Please enter the owner name " +
 							"for motorized vehicle one in one word: ");
 		
@@ -34,6 +44,8 @@ public class VehicleClient
 		keyboard.nextLine();
 		
 		System.out.printf("%s\n\n", mv1);
+		
+		//repeat with second Motorized Vehicle
 		
 		MotorizedVehicle mv2 = new MotorizedVehicle();
 		
@@ -57,16 +69,19 @@ public class VehicleClient
 		
 		System.out.printf("%s\n\n", mv2);
 		
+		//compare the vehicles
+		
 		System.out.printf("mv1 and mv2 %s equal\n", (mv1.equals(mv2)) ? "are" : "are not");
 		
+		//make the owners match and check equality again
 		mv2.setOwner(mv1.getOwner());
-		
-		
 		System.out.printf("mv1 and mv2 are %s equal\n", 
 						(mv1.equals(mv2)) ? "still" : "still not");
 		
+		//create a bicycle
 		Bicycle b = new Bicycle();
 		
+		//request user for bicycle data
 		System.out.printf("Please enter the owner " +
 				"for a bicycle as one word: ");
 		
@@ -82,8 +97,10 @@ public class VehicleClient
 		System.out.printf("\n\nb2 is %s\n", b);
 		
 		
-		
+		//close keyboard
 		keyboard.close();
+		
+		//end program
 		
 	}
 	
