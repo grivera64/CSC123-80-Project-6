@@ -10,8 +10,10 @@ package project6.park;
 public interface TicketPrice
 {
 
+	//public static final fields
     double BASEPRICE = 15.75;
     
+    //abstract methods
     void setTicketPrice();
     double getTicketPrice();
 

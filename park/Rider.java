@@ -11,17 +11,20 @@ package project6.park;
 public abstract class Rider
 {
 
+	//private fields
     private int startOnlineTime;
     private int endOnlineTime;
     private int timeOnLine;
     
+    //default constructor
     public Rider()
     {
     
-        //default constructor
+        //do nothing
     
     }
     
+    //constructor 2 setting startOnlineTime
     public Rider(int startOnlineTime)
     {
     
@@ -29,6 +32,7 @@ public abstract class Rider
     
     }
     
+    /* Mutators and Accessors */
     public void setStartOnlineTime(int startOnlineTime)
     {
     
@@ -64,6 +68,7 @@ public abstract class Rider
     
     }
     
+    //abstract methods
     public abstract void setType();
     public abstract int getType();
 

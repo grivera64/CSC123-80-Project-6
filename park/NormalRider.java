@@ -8,15 +8,17 @@ package project6.park;
 
 */
 
+//to use Random class
 import java.util.Random;
 
 public class NormalRider extends Rider implements TicketPrice
 {
 	
-	
+	//private fields
 	private double ticketPrice;
 	private int type;
 	
+	//default constructor
 	public NormalRider()
 	{
 		
@@ -24,6 +26,7 @@ public class NormalRider extends Rider implements TicketPrice
 		
 	}
 	
+	//constructor that sets startOnline time
 	public NormalRider(int startOnlineTime)
 	{
 		
@@ -31,6 +34,7 @@ public class NormalRider extends Rider implements TicketPrice
 		
 	}
 	
+	/* Accessors and Mutators */
 	public double getTicketPrice()
 	{
 		
@@ -38,6 +42,7 @@ public class NormalRider extends Rider implements TicketPrice
 		
 	}
 	
+	/* Implementing Rider and TicketPrice methods */
 	public int getType()
 	{
 		
