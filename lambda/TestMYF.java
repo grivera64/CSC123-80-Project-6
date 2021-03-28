@@ -4,7 +4,7 @@ package project6.lambda;
 
     Name: TestMYF.java
     Purpose: Tests the MyFunctionalInterface using a lambda expression
-    Author: Giovanni Rivera
+    Author: grivera64
 
 */
 
