@@ -1,3 +1,5 @@
+package project6.park;
+
 /*
 
     Name: Rider.java
@@ -6,7 +8,7 @@
 
 */
 
-public abstract Rider
+public abstract class Rider
 {
 
     private int startOnlineTime;
