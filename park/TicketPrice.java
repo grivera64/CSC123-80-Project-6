@@ -1,3 +1,4 @@
+package project6.park;
 /*
 
     Name: TicketPrice.java
