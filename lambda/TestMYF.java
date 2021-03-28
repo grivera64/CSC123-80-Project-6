@@ -13,13 +13,17 @@ import java.util.Scanner;
 public class TestMYF
 {
 
+	//driver (main) method
     public static void main(String[] args)
     {
     
+    	//create input reader
         Scanner keyboard = new Scanner(System.in);
         
+        //create lambda expression (anonymous)
         MyFunctionalInterface fiveMore = (num) -> num + 5;
         
+        //ask user for number to increment
         for (int i = 0; i < 3; i++)
         {
         
@@ -33,8 +37,10 @@ public class TestMYF
         
         }
         
+        //close input
         keyboard.close();
         
+        //terminate program
     
     }
 
