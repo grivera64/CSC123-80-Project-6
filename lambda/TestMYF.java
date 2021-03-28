@@ -18,7 +18,7 @@ public class TestMYF
     
         Scanner keyboard = new Scanner(System.in);
         
-        MyFunctionalInterface fiveMore = (num) -> x + 5;
+        MyFunctionalInterface fiveMore = (num) -> num + 5;
         
         for (int i = 0; i < 3; i++)
         {
@@ -33,6 +33,7 @@ public class TestMYF
         
         }
         
+        keyboard.close();
         
     
     }
