@@ -182,7 +182,73 @@ public class AmusementPark
 		
 		printWriter.printf("The statistics for %d\n\n", this.getParkName().toUpperCase());
 		
-		//TODO: add here the Statistics for each attraction
+		int currAttraction = 0;
+		for (Attraction attraction : this.alAttraction)
+		{
+			
+			printWriter.printf("Statistics for Attraction %s\n", attraction);
+			
+			printWriter.printf("The total number that got on the ride is %d\n",
+								attraction.getAlGotOnRideSize());
+			
+			double averageMinutes = 0.0;
+			int numOfFastRiders = 0;
+			
+			for (int index = 0; index < attraction.getAlGotOnRideSize(); index++)
+			{
+				
+				Rider rider = attraction.getGotOnRide(index);
+				
+				if (!(rider instanceof FastRider)) continue;
+				
+				numOfFastRiders++;
+				averageMinutes += rider.getEndOnlineTime() - rider.getStartOnlineTime();
+				
+			}
+			
+			averageMinutes /= attraction.getAlGotOnRideSize();
+			
+			printWriter.printf("There were %d Fast Riders who got on waiting "
+								+ "on average of %.2f minutes\n",
+								numOfFastRiders,
+								averageMinutes);
+			
+			double averageMinutes2 = 0.0;
+			int numOfNormalRiders = 0;
+			
+			for (int index = 0; index < attraction.getAlGotOnRideSize(); index++)
+			{
+				
+				Rider rider = attraction.getGotOnRide(index);
+				
+				if (!(rider instanceof NormalRider)) continue;
+				
+				numOfNormalRiders++;
+				
+				averageMinutes2 += rider.getEndOnlineTime() - rider.getStartOnlineTime();
+				
+			}
+			
+			averageMinutes2 /= attraction.getAlGotOnRideSize();
+			
+			printWriter.printf("There were %d Normal Riders who got on waiting "
+					+ "on average of %.2f minutes\n",
+					numOfNormalRiders,
+					averageMinutes2);
+			
+			printWriter.printf("There were %d Total Riders who got on "
+					+ "waiting an average of %.2f minutes",
+					numOfFastRiders + numOfNormalRiders,
+					(averageMinutes + averageMinutes2) / 2.0);
+			
+			currAttraction++;
+			
+			if (currAttraction < this.getNumAttractions())
+			{
+				printWriter.printf("\n\n");
+			}
+			
+		}
 		
 	}
 	
