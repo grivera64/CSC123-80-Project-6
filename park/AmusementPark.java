@@ -12,7 +12,7 @@ public class AmusementPark
 	
 	private String parkName;
 	private int numAttractions;
-	private ArrayList<Attraction> alAttraction;
+	private ArrayList<Attraction> alAttraction = new ArrayList<Attraction>();
 	
 	public AmusementPark()
 	{
@@ -78,15 +78,18 @@ public class AmusementPark
 		
 	}
 	
-	public void runThePark()
+	public void runThePark(int duration)
 	{
 		
 		int initialRiders = 23 * this.getNumAttractions();
 		
+		int attractIndex = -1;
+		
 		for (int j = 0; j < initialRiders; j++)
 		{
 			
-			Attraction attraction = this.alAttraction.get(j);
+			Attraction attraction = 
+					this.alAttraction.get(++attractIndex % this.getNumAttractions());
 			
 			if (j % 3 == 0 || j % 7 == 0)
 			{
@@ -105,7 +108,8 @@ public class AmusementPark
 			
 		}
 		
-		for (int currMinute = 1; currMinute < 100; currMinute++)
+		attractIndex = -1;
+		for (int currMinute = 1; currMinute < duration; currMinute++)
 		{
 			
 			int newRiders = 23 * this.numAttractions;
@@ -113,7 +117,8 @@ public class AmusementPark
 			for (int j = 0; j < newRiders; j++)
 			{
 				
-				Attraction attraction1 = this.alAttraction.get(j);
+				Attraction attraction1 = 
+						this.alAttraction.get(++attractIndex % this.getNumAttractions());
 				
 				if (j % 3 == 0 || j % 7 == 0)
 				{
@@ -141,7 +146,10 @@ public class AmusementPark
 						if (attraction.getAlFastLineSize() > 0 && toBeProcessed % 3 == 0)
 						{
 							
-							FastRider rider = attraction.removeRiderFastLine();
+							FastRider rider = attraction.removeRiderFastLine(); 
+							//TODO fix error here
+							
+							
 							rider.setEndOnlineTime(currMinute);
 							
 							attraction.addGotOnRide(rider);

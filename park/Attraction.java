@@ -19,9 +19,9 @@ public class Attraction
 	//other private fields
 	private String attractionID;
 	private int ratePerMinute;
-	private ArrayList<NormalRider> alNormalLine;
-	private ArrayList<FastRider> alFastLine;
-	private ArrayList<Rider> gotOnRide;
+	private ArrayList<NormalRider> alNormalLine = new ArrayList<NormalRider>();
+	private ArrayList<FastRider> alFastLine = new ArrayList<FastRider>();
+	private ArrayList<Rider> gotOnRide = new ArrayList<Rider>();
 	
 	//default constructor
 	public Attraction()
@@ -87,6 +87,8 @@ public class Attraction
 	public NormalRider removeRiderNormalLine()
 	{
 		
+		if (this.getAlNormalLineSize() <= 0) return null;
+		
 		NormalRider rider = this.alNormalLine.get(0);
 		
 		this.alNormalLine.remove(0);
@@ -98,7 +100,9 @@ public class Attraction
 	public FastRider removeRiderFastLine()
 	{
 		
-		FastRider rider = this.alFastLine.get(0);
+		if (this.getAlFastLineSize() < 1) return null;
+		
+		FastRider rider = this.alFastLine.get(0); //TODO fix error here
 		
 		this.alFastLine.remove(0);
 		
