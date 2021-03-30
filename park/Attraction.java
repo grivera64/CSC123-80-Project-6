@@ -118,7 +118,7 @@ public class Attraction
 	public int getAlFastLineSize()
 	{
 		
-		return this.alNormalLine.size();
+		return this.alFastLine.size();
 		
 	}
 	
