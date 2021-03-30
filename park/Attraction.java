@@ -87,6 +87,7 @@ public class Attraction
 	public NormalRider removeRiderNormalLine()
 	{
 		
+		if (this.alNormalLine.size() <= 0) return null;
 		NormalRider currRemoved = this.alNormalLine.get(0);
 		
 		this.alNormalLine.remove(0);
@@ -98,6 +99,7 @@ public class Attraction
 	public FastRider removeRiderFastLine()
 	{
 		
+		if (this.alFastLine.size() <= 0) return null;
 		FastRider currRemoved = this.alFastLine.get(0); //TODO fix error here
 		
 		this.alFastLine.remove(0);

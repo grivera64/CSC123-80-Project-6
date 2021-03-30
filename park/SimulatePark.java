@@ -46,7 +46,7 @@ public class SimulatePark
 		
 		park.runThePark(duration);
 		
-		String fileName = "";
+		String fileName;
 		
 		System.out.printf("Please enter the name of the output file:\n");
 		
