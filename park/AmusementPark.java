@@ -109,7 +109,7 @@ public class AmusementPark
 		}
 		
 		attractIndex = 0;
-		for (int currMinute = 1; currMinute < duration; currMinute++)
+		for (int currMinute = 1; currMinute <= duration; currMinute++)
 		{
 			
 			int newRiders = 23 * this.numAttractions;
