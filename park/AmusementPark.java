@@ -143,7 +143,7 @@ public class AmusementPark
 					while (toBeProcessed > 0)
 					{
 						
-						if (attraction.getAlFastLineSize() > 0 && toBeProcessed % 3 == 0)
+						if (attraction.getAlFastLineSize() > 0 && toBeProcessed % 3 != 0)
 						{
 							
 							FastRider rider = attraction.removeRiderFastLine(); 
