@@ -81,63 +81,68 @@ public class AmusementPark
 	public void runThePark(int duration)
 	{
 		
+		
 		int initialRiders = 23 * this.getNumAttractions();
+		Attraction currAttraction;
+		FastRider currFastRider;
+		NormalRider currNormalRider;
 		
 		for (int j = 0; j < initialRiders; j++)
 		{
 			
-			Attraction attraction = 
-					this.alAttraction.get(j % this.getNumAttractions());
+			currAttraction = this.alAttraction.get(j % this.getNumAttractions());
 			
 			if (j % 3 == 0 || j % 7 == 0)
 			{
 				
-				FastRider rider = new FastRider(0);
-				attraction.addRiderFastLine(rider);
+				currFastRider = new FastRider(0);
+				currAttraction.addRiderFastLine(currFastRider);
 				
 			}
 			else
 			{
 				
-				NormalRider rider = new NormalRider(0);
-				attraction.addRiderNormalLine(rider);
+				currNormalRider = new NormalRider(0);
+				currAttraction.addRiderNormalLine(currNormalRider);
 				
 			}
 			
 		}
 		
-		int newRiders = 23 * this.getNumAttractions();
+		int newRiders;
 		
 		for (int currMinute = 1; currMinute <= duration; currMinute++)
 		{
 			
+			newRiders = 23 * this.getNumAttractions();
 			
 			for (int j = 0; j < newRiders; j++)
 			{
 				
-				Attraction attraction1 = 
-						this.alAttraction.get(j % this.getNumAttractions());
+				currAttraction = this.alAttraction.get(j % this.getNumAttractions());
 
 				
 				if (j % 3 == 0 || j % 7 == 0)
 				{
 					
-					FastRider rider = new FastRider(currMinute);
-					attraction1.addRiderFastLine(rider);
+					currFastRider = new FastRider(currMinute);
+					currAttraction.addRiderFastLine(currFastRider);
 					
 				}
 				else
 				{
 					
-					NormalRider rider = new NormalRider(currMinute);
-					attraction1.addRiderNormalLine(rider);
+					currNormalRider = new NormalRider(currMinute);
+					currAttraction.addRiderNormalLine(currNormalRider);
 					
 				}
 				
-				
+			} //end for loop (j)
 				//debugging here
 				//System.out.printf(
 				//"DEBUG: num of attractions %d\n", this.getNumAttractions());
+				
+				int toBeProcessed;
 				
 				for (Attraction attraction : this.alAttraction)
 				{
@@ -145,7 +150,7 @@ public class AmusementPark
 					
 					//System.out.printf("DEBUG: On attraction %s\n", attraction.getAttractionID());
 					
-					int toBeProcessed = attraction.getRatePerMinute();
+					toBeProcessed = attraction.getRatePerMinute();
 					
 					while (toBeProcessed > 0)
 					{
@@ -154,26 +159,26 @@ public class AmusementPark
 						//		index, attraction.getAlFastLineSize(), toBeProcessed);
 						
 						
-						if (attraction.getAlFastLineSize() > 0 && toBeProcessed % 3 != 0)
+						if (attraction.getAlFastLineSize() != 0 && toBeProcessed % 3 != 0)
 						{
 							
-							FastRider rider = attraction.removeRiderFastLine();
+							currFastRider = attraction.removeRiderFastLine();
 							
-							rider.setEndOnlineTime(currMinute);
+							currFastRider.setEndOnlineTime(currMinute);
 							
-							attraction.addGotOnRide(rider);
+							attraction.addGotOnRide(currFastRider);
 							
 							toBeProcessed--;
 							
 						}
-						else if (attraction.getAlNormalLineSize() > 0)
+						else if (attraction.getAlNormalLineSize() != 0)
 						{
 							
-							NormalRider rider = attraction.removeRiderNormalLine();
+							currNormalRider = attraction.removeRiderNormalLine();
 							
-							rider.setEndOnlineTime(currMinute);
+							currNormalRider.setEndOnlineTime(currMinute);
 							
-							attraction.addGotOnRide(rider);
+							attraction.addGotOnRide(currNormalRider);
 							
 							toBeProcessed--;
 							
@@ -189,7 +194,6 @@ public class AmusementPark
 					
 				} //end for each loop
 				
-			} //end for loop (j)
 			
 		} //end for loop (currMinute)
 		
