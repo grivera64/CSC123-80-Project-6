@@ -27,7 +27,7 @@ public class Attraction
 	public Attraction()
 	{
 		
-		this.setAttractionID();
+		this.attractionID = "";
 		
 	}
 	
@@ -35,8 +35,8 @@ public class Attraction
 	public Attraction(int ratePerMinute)
 	{
 		
-		this.setRatePerMinute(ratePerMinute);
 		this.setAttractionID();
+		this.setRatePerMinute(ratePerMinute);
 		
 	}
 	
@@ -88,11 +88,9 @@ public class Attraction
 	{
 		
 		if (this.alNormalLine.size() <= 0) return null;
-		NormalRider currRemoved = this.alNormalLine.get(0);
 		
-		this.alNormalLine.remove(0);
 		
-		return currRemoved;
+		return this.alNormalLine.remove(0);
 		
 	}
 	
@@ -100,11 +98,8 @@ public class Attraction
 	{
 		
 		if (this.alFastLine.size() <= 0) return null;
-		FastRider currRemoved = this.alFastLine.get(0); //TODO fix error here
 		
-		this.alFastLine.remove(0);
-		
-		return currRemoved;
+		return this.alFastLine.remove(0);
 		
 	}
 	

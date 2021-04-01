@@ -44,6 +44,8 @@ public abstract class Rider
     {
     
         this.endOnlineTime = endOnlineTime;
+        
+        this.timeOnLine = this.getEndOnlineTime() - this.getStartOnlineTime();
     
     }
     

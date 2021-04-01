@@ -29,7 +29,9 @@ public class FastRider extends NormalRider implements TicketPrice
 	public FastRider(int startOnlineTime)
 	{
 		
-		this.setStartOnlineTime(startOnlineTime);
+		super(startOnlineTime);
+		this.setTicketPrice();
+		this.setType();
 		
 	}
 	
@@ -57,8 +59,8 @@ public class FastRider extends NormalRider implements TicketPrice
 	
 	public void setType()
 	{
-		
-		this.type = (new Random()).nextInt(10) + 1;
+		Random random = new Random();
+		this.type = random.nextInt(10) + 1;
 		
 	}
 	

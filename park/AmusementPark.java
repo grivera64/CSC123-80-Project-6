@@ -19,7 +19,7 @@ public class AmusementPark
 		
 		this.setParkName("");
 		this.setNumAttractions(0);
-		this.createAttractions(this.getNumAttractions());
+		this.createAttractions(0);
 		
 	}
 	
@@ -83,13 +83,11 @@ public class AmusementPark
 		
 		int initialRiders = 23 * this.getNumAttractions();
 		
-		int attractIndex = -1;
-		
 		for (int j = 0; j < initialRiders; j++)
 		{
 			
 			Attraction attraction = 
-					this.alAttraction.get(++attractIndex % this.getNumAttractions());
+					this.alAttraction.get(j % this.getNumAttractions());
 			
 			if (j % 3 == 0 || j % 7 == 0)
 			{
@@ -108,17 +106,18 @@ public class AmusementPark
 			
 		}
 		
-		attractIndex = 0;
-		for (int currMinute = 1; currMinute < duration; currMinute++)
+		int newRiders = 23 * this.getNumAttractions();
+		
+		for (int currMinute = 1; currMinute <= duration; currMinute++)
 		{
 			
-			int newRiders = 23 * this.numAttractions;
 			
 			for (int j = 0; j < newRiders; j++)
 			{
 				
 				Attraction attraction1 = 
-						this.alAttraction.get(attractIndex);
+						this.alAttraction.get(j % this.getNumAttractions());
+
 				
 				if (j % 3 == 0 || j % 7 == 0)
 				{
@@ -140,13 +139,11 @@ public class AmusementPark
 				//System.out.printf(
 				//"DEBUG: num of attractions %d\n", this.getNumAttractions());
 				
-				for (int index = 0; index < this.getNumAttractions(); index++)
+				for (Attraction attraction : this.alAttraction)
 				{
 					
 					
-					Attraction attraction = this.alAttraction.get(index);
-					
-					System.out.printf("DEBUG: On attraction %s\n", attraction.getAttractionID());
+					//System.out.printf("DEBUG: On attraction %s\n", attraction.getAttractionID());
 					
 					int toBeProcessed = attraction.getRatePerMinute();
 					
@@ -188,17 +185,13 @@ public class AmusementPark
 							
 						}
 						
-					}
+					} //end while
 					
-				}
-			
-				attractIndex++;
+				} //end for each loop
 				
-				attractIndex %= this.getNumAttractions();
-				
-			}
+			} //end for loop (j)
 			
-		}
+		} //end for loop (currMinute)
 		
 		
 	}
@@ -208,7 +201,6 @@ public class AmusementPark
 		
 		printWriter.printf("The statistics for %s\n\n", this.getParkName().toUpperCase());
 		
-		int currAttraction = 0;
 		for (Attraction attraction : this.alAttraction)
 		{
 			
@@ -217,9 +209,9 @@ public class AmusementPark
 			printWriter.printf("The total number that got on the ride is %d\n",
 								attraction.getAlGotOnRideSize());
 			
-			int averageMinutes = 0;
+			double averageMinutesFast = 0;
 			int numOfFastRiders = 0;
-			int averageMinutes2 = 0;
+			double averageMinutesNormal = 0;
 			int numOfNormalRiders = 0;
 			
 			for (int index = 0; index < attraction.getAlGotOnRideSize(); index++)
@@ -227,46 +219,43 @@ public class AmusementPark
 				
 				Rider rider = attraction.getGotOnRide(index);
 				
-				if (!(rider instanceof FastRider))
+				if (rider instanceof FastRider)
 				{
 					
-					numOfNormalRiders++;
-				
-					averageMinutes2 += rider.getEndOnlineTime() - rider.getStartOnlineTime();
+					numOfFastRiders++;
+					
+					averageMinutesFast += rider.getTimeOnLine();
 					
 				}
 				else
 				{
 					
-					numOfFastRiders++;
+					numOfNormalRiders++;
 					
-					averageMinutes += rider.getEndOnlineTime() - rider.getStartOnlineTime();
+					averageMinutesNormal += rider.getTimeOnLine();
 				
 				}
 				
 			}
 			
+			averageMinutesFast /= numOfFastRiders;
+			averageMinutesNormal /= numOfNormalRiders;
+			
 			printWriter.printf("There were %d Fast Riders who got on waiting "
 								+ "on average of %.2f minutes\n",
 								numOfFastRiders,
-								averageMinutes / (double) numOfFastRiders);
+								averageMinutesFast);
 			
 			printWriter.printf("There were %d Normal Riders who got on waiting "
 					+ "on average of %.2f minutes\n",
 					numOfNormalRiders,
-					averageMinutes2 / (double) numOfNormalRiders);
+					averageMinutesNormal);
 			
 			printWriter.printf("There were %d Total Riders who got on "
-					+ "waiting an average of %.2f minutes",
-					numOfFastRiders + numOfNormalRiders,
-					(averageMinutes + averageMinutes2) / 2.0);
+					+ "waiting an average of %.2f minutes\n\n\n",
+					attraction.getAlGotOnRideSize(),
+					(averageMinutesFast + averageMinutesNormal) / 2.0);
 			
-			currAttraction++;
-			
-			if (currAttraction < this.getNumAttractions())
-			{
-				printWriter.printf("\n\n");
-			}
 			
 		}
 		

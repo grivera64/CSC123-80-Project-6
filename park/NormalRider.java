@@ -30,7 +30,8 @@ public class NormalRider extends Rider implements TicketPrice
 	public NormalRider(int startOnlineTime)
 	{
 		
-		this.setStartOnlineTime(startOnlineTime);
+		super(startOnlineTime);
+		this.setType();
 		
 	}
 	
@@ -60,7 +61,9 @@ public class NormalRider extends Rider implements TicketPrice
 	public void setType()
 	{
 		
-		this.type = (new Random()).nextInt(5) + 1;
+		Random random = new Random();
+		
+		this.type = random.nextInt(5) + 1;
 		
 	}
 	
